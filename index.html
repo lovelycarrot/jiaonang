@@ -1,0 +1,589 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <meta name="full-screen" content="true" />
+  <meta name="screen-orientation" content="portrait" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="360-fullscreen" content="true" />
+  <title>好物治愈馆</title>
+  <link href="http://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">
+  <!-- 解释：build用来构架项目时候压缩代码 -->
+  <!-- build:css css/index.css -->
+  <link href="./css/reset.mobile.css" rel="stylesheet" />
+  <link href="./css/general.css" rel="stylesheet" />
+  <link href="./css/index.css" rel="stylesheet" />
+  <link href="./css/capsule.css" rel="stylesheet" />
+  <link href="./css/monster_static.css" rel="stylesheet" />
+  <link href="./css/monster_left.css" rel="stylesheet" />
+  <link href="./css/monster_left_up.css" rel="stylesheet" />
+  <link href="./css/monster_left_fail.css" rel="stylesheet" />
+  <link href="./css/monster_right_up.css" rel="stylesheet" />
+  <link href="./css/monster_right.css" rel="stylesheet" />
+  <link href="./css/monster_right_fail.css" rel="stylesheet" />
+  <link href="./css/loading_monster.css" rel="stylesheet" />
+  <link href="./css/left_egg_dog.css" rel="stylesheet" />
+  <link href="./css/left_egg_monster.css" rel="stylesheet" />
+  <link href="./css/left_egg_finger.css" rel="stylesheet" />
+  <link href="./css/left_egg_finger_monster.css" rel="stylesheet" />
+  <link href="./css/right_egg_finger.css" rel="stylesheet" />
+  <link href="./css/right_egg_finger_monster.css" rel="stylesheet" />
+  <link href="./css/right_egg_dog.css" rel="stylesheet" />
+  <link href="./css/right_egg_dog_monster.css" rel="stylesheet" />
+  <link href="./css/p6_bottom.css" rel="stylesheet" />
+  <!-- endbuild -->
+</head>
+
+<body>
+  <!-- 如果是在微信里运行，在页面的最上方放一张隐藏的图片，作为默认的分享图片 -->
+  <div style="display:none;">
+    <img src="./img/share.jpg">
+  </div>
+  <div class="static-holder">
+    <div class="p2-monster"></div>
+    <div class="p2-egg"></div>
+  </div>
+  <!-- loading -->
+  <div class="page p0 loading">
+    <div class="p0-loading">
+      <img src="./img/p0_capsule_left.png" class="p0-capsule-left">
+      <div class="p0-center">
+        <img src="./img/loading_dots1.png" class="p0-dots1 dots">
+        <img src="./img/loading_dots2.png" class="p0-dots2 dots1">
+        <img src="./img/loading_dots5.png" class="p0-dots3 dots">
+        <img src="./img/loading_dots4.png" class="p0-dots4 dots1">
+        <img src="./img/loading_dots6.png" class="p0-dots5 dots">
+        <img src="./img/loading_dots6.png" class="p0-dots6 dots1">
+        <img src="./img/loading_dots5.png" class="p0-dots7 dots">
+        <div class="p0-monster"></div>
+      </div>
+      <img src="./img/p0_capsule_right.png" class="p0-capsule-right">
+    </div>
+    <img src="./img/loading_words.png" class="p0-words">
+  </div>
+  <!-- 第1页 -->
+  <div class="page p1">
+    <div class="p1-top"><img src="./img/p1_bottom_dot.png" class="p1_bottom_dot"><img src="./img/p1_rotate.png" class="p1-rotate-img" ></div>
+    <div class="p1-bottom">
+      <img src="./img/p1_bottom_img1.png" class="p1-bottom-word1">
+      <img src="./img/p1_bottom_img2.png" class="p1-bottom-word2">
+      <div class="p1-start-btn">
+        <img src="./img/p1_bottom_btn1.png" class="p1-start-btn-top">
+        <img src="./img/p1_bottom_btn2.png" class="p1-start-btn-mid" >
+        <img src="./img/p1_bottom_btn3.png" class="p1-start-btn-bottom">
+      </div>
+    </div>
+  </div>
+  <!-- 第2页 -->
+  <div class="page p2">
+    <div class="p2-center">
+      <div class="p2-center-elevator">
+        <img src="./img/p2_center_elevator.png" class="p2-elevator-img">
+        <img src="./img/chilun2.png" class="p2-chilun1">
+        <img src="./img/chilun.png" class="p2-chilun2">
+        <!-- <div class="p2-monster"></div>
+        <div class="p2-egg"></div> -->
+      </div>
+      <img src="./img/p2_center_bottom.png" class="p2-center-bottom">
+    </div>
+    <div id="p2-scroll-wrapper" class = "scrollable">
+      <!-- <div id="scroller"> -->
+        <ul class="p2-left-boxs">
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule1_left p2-capsule-left p2-shake1"></div>
+                <div class="p2_capsule1_right p2-capsule-right p2-shake1"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule3_left p2-capsule-left p2-shake"></div>
+                <div class="p2_capsule3_right p2-capsule-right p2-shake"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule5_left p2-capsule-left p2-shake2"></div>
+                <div class="p2_capsule5_right p2-capsule-right p2-shake2"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule7_left p2-capsule-left p2-shake1"></div>
+                <div class="p2_capsule7_right p2-capsule-right p2-shake1"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule9_left p2-capsule-left p2-shake"></div>
+                <div class="p2_capsule9_right p2-capsule-right p2-shake"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule1_left p2-capsule-left p2-shake2"></div>
+                <div class="p2_capsule1_right p2-capsule-right p2-shake2"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule3_left p2-capsule-left p2-shake1"></div>
+                <div class="p2_capsule3_right p2-capsule-right p2-shake1"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule5_left p2-capsule-left p2-shake"></div>
+                <div class="p2_capsule5_right p2-capsule-right p2-shake"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule7_left p2-capsule-left p2-shake2"></div>
+                <div class="p2_capsule7_right p2-capsule-right p2-shake2"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item left">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule9_left p2-capsule-left p2-shake1"></div>
+                <div class="p2_capsule9_right p2-capsule-right p2-shake1"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="p2-right-boxs">
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule2_left p2-capsule-left p2-shake1"></div>
+                <div class="p2_capsule2_right p2-capsule-right p2-shake1"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule4_left p2-capsule-left p2-shake2"></div>
+                <div class="p2_capsule4_right p2-capsule-right p2-shake2"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule6_left p2-capsule-left p2-shake"></div>
+                <div class="p2_capsule6_right p2-capsule-right p2-shake"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule8_left p2-capsule-left p2-shake1"></div>
+                <div class="p2_capsule8_right p2-capsule-right p2-shake1"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule10_left p2-capsule-left p2-shake2"></div>
+                <div class="p2_capsule10_right p2-capsule-right p2-shake2"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule2_left p2-capsule-left p2-shake3"></div>
+                <div class="p2_capsule2_right p2-capsule-right p2-shake3"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule4_left p2-capsule-left p2-shake"></div>
+                <div class="p2_capsule4_right p2-capsule-right p2-shake"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule6_left p2-capsule-left p2-shake2"></div>
+                <div class="p2_capsule6_right p2-capsule-right p2-shake2"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule8_left p2-capsule-left p2-shake3"></div>
+                <div class="p2_capsule8_right p2-capsule-right p2-shake3"></div>
+              </div>
+            </div>
+          </li>
+          <li class="p2-capsule-item right">
+            <div class="p2-capsule-box">
+              <div class="p2-capsule-wrapper">
+                <div class="p2_capsule10_left p2-capsule-left p2-shake1"></div>
+                <div class="p2_capsule10_right p2-capsule-right p2-shake1"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      <!-- </div> -->
+      <div class="p2-joy-wrapper">
+        <img src="./img/p2_joytext.png" class="p2-joy-text">
+        <img src="./img/p2_joy.png" class="p2-joy">
+      </div>
+    </div>
+    <div class="p2-rule">
+      <div class="p2-start"></div>
+    </div>
+  </div>
+  <!-- 第3页 获奖页面-->
+  <div class="page p3 p-alert">
+    <div class="p-cont">
+      <div class="p-alert-star"><img src="./img/p_alert_star.png"></div>
+      <div class="p3-head p-alert-head">
+        <div class="p-alert-close"><img src="./img/p6_close_btn.png"></div>
+        <div class="p-alert-head-logo"><img src="./img/p3_logo.png"></div>
+        <div class="p-alert-head-medicine"><img src="./img/page_alert_medicine.png "></div>
+        <p class="p-alert-head-title">品质治愈·1111</p>
+      </div>
+      <div class="p-alert-bottom">
+        <div class="p3-bottom-left"><img src="./img/p3_bottom_left.png" class="p3-bottom-left-img"></div><!--
+         --><div class="p3-bottom-right"><img src="./img/p3_bottom_right.png" class="p3-bottom-right-img"></div>
+        <div class="p-alert-bottom-btn p3-bottom-btn btn-touchable"><p class="p-alert-bottom-btn-text">领取奖品</p></div>
+      </div>
+    </div>
+  </div>
+  <!-- 第4页 输入信息页面-->
+  <div class="page p4 p-alert">
+    <div class="p-cont">
+      <div class="p-alert-star"><img src="./img/p_alert_star.png"></div>
+      <div class="p4-head p-alert-head">
+        <div class="p-alert-close"><img src="./img/p6_close_btn.png"></div>
+        <div class="p-alert-head-logo"><img src="./img/p4_logo.png"></div>
+        <div class="p-alert-head-medicine"><img src="./img/page_alert_medicine.png "></div>
+        <p class="p-alert-head-title">品质治愈·1111</p>
+      </div>
+      <div class="p-alert-bottom p4-bottom">
+          <div class="p4-bottom-form-left">
+            <p class="p4-bottom-form-message ">姓名</p>
+            <p class="p4-bottom-form-message ">电话</p>
+            <p class="p4-bottom-form-message ">地址</p>
+          </div>
+          <div class="p4-bottom-form-right">
+            <input type="text" class="p4-bottom-form-input p4-bottom-name" />
+            <input type="text" class="p4-bottom-form-input p4-bottom-tel" />
+            <input type="text" class="p4-bottom-form-input p4-bottom-address" />
+          </div>
+        <div class="p-alert-bottom-btn p4-bottom-btn btn-touchable">
+          <p class="p-alert-bottom-btn-text">提交</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 第5页 提交反馈页面-->
+  <div class="page p5 p-alert">
+    <div class="p-cont">
+      <div class="p-alert-star"><img src="./img/p_alert_star.png"></div>
+      <div class="p5-head p-alert-head">
+        <div class="p-alert-close"><img src="./img/p6_close_btn.png"></div>
+        <div class="p-alert-head-logo"><img src="./img/p5_logo.png"></div>
+        <div class="p-alert-head-medicine"><img src="./img/page_alert_medicine.png"></div>
+        <p class="p-alert-head-title">品质治愈·1111</p>
+      </div>
+      <div class="p-alert-bottom">
+        <img src="./img/p5_bottom_true.png" class="p5-bottom-true">
+        <img src="./img/p5_bottom_false.png" class="p5-bottom-false">
+        <p class="p5-bottom-prompt">&nbsp&nbsp提交成功！</p>
+        <div class="p-alert-bottom-btn p5-bottom-btn btn-touchable">
+          <p class="p-alert-bottom-btn-text">嘚瑟一下</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 第6页 分享故事页面-->
+  <div class="page p6 p-alert ">
+    <div class="p-cont">
+      <div class="p-alert-star"><img src="./img/p_alert_star.png"></div>
+      <!-- <div class="p6-alert"> -->
+      <div class="p6-head p-alert-head">
+        <div class="p-alert-close"><img src="./img/p6_close_btn.png"></div>
+        <div class="p-alert-head-logo">
+          <img src="./img/p6_logo.png" class="p-alert-logo">
+          <img class="p6_head_img p6-photo" src="./img/share.jpg">
+        </div>
+        <div class="p-alert-head-medicine"><img src="./img/page_alert_medicine.png "></div>
+        <p class="p-alert-head-title p6-weixin-name">微信名</p>
+      </div>
+      <div class="p-alert-bottom p6-bottom">
+        <div class="p6-cont-box scrollable">
+          <img src='' class="p6-cont-img">
+          <div class="p6-cont-text"></div>
+        </div>
+        <div class="p-alert-bottom-btn p6-bottom-btn btn-touchable">
+          <p class="p-alert-bottom-btn-text">分享故事</p>
+        </div>
+      </div>
+     <!-- </div> -->
+    </div>
+    <div class="p6-bottom-animation"></div>
+  </div>
+  <!-- 第7页 上传故事页面-->
+  <div class="page p7 p-alert">
+    <div class="p-cont">
+      <div class="p-alert-star"><img src="./img/p_alert_star.png"></div>
+      <div class="p7-head p-alert-head">
+        <div class="p-alert-close"><img src="./img/p6_close_btn.png"></div>
+        <div class="p-alert-head-logo">
+          <img src="./img/p6_logo.png" class="p-alert-logo">
+          <img class="p6_head_img p7-photo" src="{$headimgurl}">
+        </div>
+        <div class="p-alert-head-medicine"><img src="./img/page_alert_medicine.png "></div>
+        <p class="p-alert-head-title p7-weixin-name">{$nickname}</p>
+      </div>
+      <div class="p-alert-bottom p7-bottom">
+          <textarea class="p7-bottom-text scrollable"></textarea>
+          <div class="p7-placeholder">
+            <img class="p7-placeholder-text" src="./img/p7_placeholder_text.png"></div>
+          <div class="p7-bottom-imgdiv"><img class="p7-bottom-img" src=""><img class="p7-uptips" src="./img/p7_up.png"></div>
+          <input type="file" class="p7-file">
+          <div class="p-alert-bottom-btn p7-bottom-btn btn-touchable">
+            <p class="p-alert-bottom-btn-text">上传故事<span class="dotting"></span></p>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!-- 第8页 故事提交成功-->
+  <div class="page p8 p-alert">
+    <div class="p-cont">
+      <div class="p-alert-star"><img src="./img/p_alert_star.png"></div>
+      <div class="p5-head p-alert-head">
+        <div class="p-alert-close"><img src="./img/p6_close_btn.png"></div>
+        <div class="p-alert-head-logo"><img src="./img/p5_logo.png"></div>
+        <div class="p-alert-head-medicine"><img src="./img/page_alert_medicine.png"></div>
+        <p class="p-alert-head-title">品质治愈·1111</p>
+      </div>
+      <div class="p-alert-bottom">
+        <img class="p5-bottom-true" src="./img/p5_bottom_true.png">
+        <p class="p5-bottom-prompt">&nbsp&nbsp上传成功！</p>
+        <div class="p-alert-bottom-btn p-alert-btns-left btn-touchable">
+          <p class="p-alert-bottom-btn-text">我的故事</p>
+        </div>
+        <div class="p-alert-bottom-btn p-alert-btns-right btn-touchable">
+          <p class="p-alert-bottom-btn-text">其它故事</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第10页 故事提交失败-->
+  <div class="page p10 p-alert">
+    <div class="p-cont">
+      <div class="p-alert-star"><img src="./img/p_alert_star.png"></div>
+      <div class="p5-head p-alert-head">
+        <div class="p-alert-close"><img src="./img/p6_close_btn.png"></div>
+        <div class="p-alert-head-logo"><img src="./img/p5_logo.png"></div>
+        <div class="p-alert-head-medicine"><img src="./img/page_alert_medicine.png"></div>
+        <p class="p-alert-head-title">品质治愈·1111</p>
+      </div>
+      <div class="p-alert-bottom">
+        <img src="./img/p5_bottom_false.png" class="p5-bottom-true ">
+        <p class="p5-bottom-prompt">&nbsp&nbsp上传失败！</p>
+
+        <div class="p-alert-bottom-btn p-alert-btns-left btn-touchable">
+          <p class="p-alert-bottom-btn-text">重新上传</p>
+        </div>
+        <div class="p-alert-bottom-btn p-alert-btns-right btn-touchable">
+          <p class="p-alert-bottom-btn-text">其它故事</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 第9页 分享浮层-->
+  <div class="page p9 p-alert">
+    <img src="./img/p9_bg.png" class="p9-share-hint">
+    <img src="./img/logo.png" alt="" class="p9-jd-logo">
+  </div>
+
+  <script>
+  var app = app || {};
+  app.root = './';
+  // var PUBLIC = '__PUBLIC__/';
+  // var storyArr = <?php echo $data;?>;
+  var storyArr = [{
+    id: 1,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 3,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 2,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 4,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 5,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 6,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 7,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 8,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 9,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 10,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 11,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 12,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 13,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 14,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 15,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 16,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 17,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 18,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  },{
+    id: 19,
+    headimgurl: './img/chilun.png',
+    nickname: '小满',
+    img: './img/left_egg_monster.png',
+    info: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+  }];
+  </script>
+  <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/PreloadJS/0.6.0/preloadjs.min.js"></script>
+  <script src="http://cdn.bootcss.com/SoundJS/0.6.0/soundjs.min.js"></script>
+  <script src="http://cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
+  <script src="http://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.js"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <!-- build:js js/index.js -->
+  <script type="text/javascript" src="./js/lib/exif.js"></script>
+  <script type="text/javascript" src="./js/lib/mobileFix.mini.js"></script>
+  <script type="text/javascript" src="./js/lib/lrz.js"></script>
+  <script src="./js/MovieSprites.js"></script>
+  <script src="./js/music.js"></script>
+  <script src="./js/loading.js"></script>
+  <script src="./js/index.js"></script>
+  <script src='./js/wxshare.js'></script>
+  <script src='./js/landscape.js'></script>
+  <script src='./js/scroll.js'></script>
+  <!-- endbuild -->
+  <script type="text/javascript">
+  window.wxshare.config({
+    title: '好物治愈馆',
+    desc: 'Ta一句话也没说,就把我给治愈了',
+    link: 'http://w.benbun.com/jingdong/zhiyu/',
+    imgUrl: './img/share.jpg'
+  });
+  </script>
+</body>
+
+</html>
